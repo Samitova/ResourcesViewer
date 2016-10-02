@@ -1,0 +1,44 @@
+﻿<Window x:Class="ResourcesViewer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ResourcesViewer"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" x:Name="menu" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+            <MenuItem x:Name="fileItem" Header="_File" >
+                <Separator/>
+                <MenuItem x:Name="exitItem" Header="_Exit" Click="exitItem_Click" />
+            </MenuItem>
+            <MenuItem x:Name="editItem" Header="_Edit" />
+            <MenuItem x:Name="toolsItem" Header="_Tools">
+                <MenuItem x:Name="findItem" Header="_Find" Click="findItem_Click"/>
+                <Separator/>
+                <MenuItem x:Name="optionsItem" Header="_Options..." Click="optionsItem_Click"/>
+            </MenuItem>
+        </Menu>
+        <ToolBar DockPanel.Dock="Top"  x:Name="mainToolBar" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+            <Button Content="Exit"/>
+            <Button Content="Find"/>
+        </ToolBar>       
+        <StatusBar DockPanel.Dock ="Bottom" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Background="Beige" >
+            <StatusBarItem>
+                <TextBlock Name="statBarText" Text="Ready"/>
+            </StatusBarItem>
+        </StatusBar>
+        <Grid Height="250" VerticalAlignment="Top" Width="516">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TreeView Grid.Column="0"/>
+            <GridSplitter Grid.Column="1" Grid.RowSpan="2" Width="2"  VerticalAlignment="Stretch"
+                          HorizontalAlignment="Center"/>
+            <RichTextBox Grid.Column="2"/>
+        </Grid>
+
+    </DockPanel>
+</Window>
