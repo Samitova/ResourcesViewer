@@ -6,6 +6,11 @@
         xmlns:local="clr-namespace:ResourcesViewer"
         mc:Ignorable="d"
         Title="Options" Height="300" Width="400" Background="WhiteSmoke" WindowStartupLocation="CenterOwner">
+    <Window.Resources>
+        <ObjectDataProvider x:Key="myOptions" ObjectType="{x:Type local:Options}" MethodName="GetInstance">
+        </ObjectDataProvider>
+    </Window.Resources>   
+
     <Grid >
         <Grid.RowDefinitions>
             <RowDefinition Height="211*"/>
@@ -35,16 +40,21 @@
             <Label Grid.Column="0" Grid.Row="0" Content="Root directory:"/>
             <TextBox Grid.Row="1" Grid.Column="0" x:Name="rootDirectoryTextBox" HorizontalAlignment="Left" 
                      Height="23" Margin="5,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" 
-                     Width="139" Text="D:/Resources"/>
+                     Width="139" Text="{Binding Source={StaticResource myOptions}, Path=rootDirectory, Mode=TwoWay}"/>
             <Button x:Name="browseButton" Grid.Column="1" Grid.Row="1" Content="Browse..." Height="22" VerticalAlignment="Top" Margin="6,0,10,0" Click="browseButton_Click" />
             <Label x:Name="resourcesLabel" Content="Resources files:" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" Height="26" Width="90"/>
             <StackPanel Grid.Row="3" Grid.Column="0" Margin="0,0,0,10">
-                <CheckBox x:Name="resFile" Content=".res" Margin="10,0,0,0" IsChecked="True" Checked="resourcesFile_Checked" Unchecked="resourcesFile_Unchecked"/>
-                <CheckBox x:Name="xmlFile" Content=".xml" Margin="10,5,0,0" IsChecked="True" Checked="resourcesFile_Checked" Unchecked="resourcesFile_Unchecked"/>
-                <CheckBox x:Name="mapFile" Content=".map" Margin="10,5,0,0" IsChecked="True" Checked="resourcesFile_Checked" Unchecked="resourcesFile_Unchecked"/>
+                <CheckBox x:Name="resFile" Content=".res" Margin="10,0,0,0"
+                          IsChecked="{Binding Source={StaticResource  myOptions}, Path=isResFile, Mode=TwoWay}"/>
+                <CheckBox x:Name="xmlFile" Content=".xml" Margin="10,5,0,0" 
+                          IsChecked="{Binding Source={StaticResource  myOptions}, Path=isXmlFile, Mode=TwoWay}"/>
+                <CheckBox x:Name="mapFile" Content=".map" Margin="10,5,0,0"  
+                          IsChecked="{Binding Source={StaticResource  myOptions}, Path=isMapFile, Mode=TwoWay}"/>
             </StackPanel>
         </Grid>
-        <Button x:Name="canselButton" Content="Cansel" Grid.Column="1" HorizontalAlignment="Left" Margin="152,16,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="okButton" Content="OK" Grid.Column="1" HorizontalAlignment="Left" Margin="67,16,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="canselButton" Content="Cansel" Grid.Column="1" HorizontalAlignment="Left" Margin="152,16,0,0"
+                Grid.Row="1" VerticalAlignment="Top" Width="75" Click="canselButton_Click"/>
+        <Button x:Name="okButton" Content="OK" Grid.Column="1" HorizontalAlignment="Left" 
+                Margin="67,16,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="okButton_Click"/>
     </Grid>
 </Window>

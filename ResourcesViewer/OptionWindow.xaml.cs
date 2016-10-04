@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Configuration;
+using System.IO;
 
 namespace ResourcesViewer
 {
@@ -19,12 +21,10 @@ namespace ResourcesViewer
     /// </summary>
     public partial class OptionWindow : Window
     {
-        public string rootDirectory { set; get;} 
-        public string resourcesFilesExtention { set; get; }
+        
         public OptionWindow()
         {
-            InitializeComponent();
-            rootDirectory = @"D:/Resources";            
+            InitializeComponent();           
         }
 
         private void optionListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -32,27 +32,24 @@ namespace ResourcesViewer
 
         }
 
-        private void resourcesFile_Checked(object sender, RoutedEventArgs e)
-        {
-            string substr = getCheckBoxContent(sender as CheckBox) + ";";
-            resourcesFilesExtention += substr;            
-        }
-
-        private void resourcesFile_Unchecked(object sender, RoutedEventArgs e)
-        {                       
-            string substr = getCheckBoxContent(sender as CheckBox) +";";
-            int index = resourcesFilesExtention.IndexOf(substr);
-            resourcesFilesExtention = resourcesFilesExtention.Remove(index, substr.Length);            
-        }
-
-        private string getCheckBoxContent(CheckBox ckBox) {
-            string checkBoxContent = ckBox.Content.ToString();
-            return checkBoxContent;
-        }      
-
         private void browseButton_Click(object sender, RoutedEventArgs e)
         {
+            
 
         }
+
+        private void okButton_Click(object sender, RoutedEventArgs e)
+        {
+            Options.GetInstance().SaveConfiguration();
+            this.Close();
+        }
+
+        private void canselButton_Click(object sender, RoutedEventArgs e)
+        {
+            Options.GetInstance().LoadConfiguration();
+            this.Close();
+        }
+
+       
     }
 }

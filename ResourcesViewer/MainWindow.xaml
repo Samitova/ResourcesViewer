@@ -37,7 +37,7 @@
             <TreeView Grid.Column="0"/>
             <GridSplitter Grid.Column="1" Grid.RowSpan="2" Width="2"  VerticalAlignment="Stretch"
                           HorizontalAlignment="Center"/>
-            <RichTextBox Grid.Column="2"/>
+            <TextBlock Grid.Column="2" Text="tr"/>
         </Grid>
 
     </DockPanel>

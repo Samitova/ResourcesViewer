@@ -19,10 +19,11 @@ namespace ResourcesViewer
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
+    {        
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent();            
+            
         }
 
         private void exitItem_Click(object sender, RoutedEventArgs e)
@@ -34,14 +35,18 @@ namespace ResourcesViewer
         {
             OptionWindow w = new OptionWindow();
             w.Owner = this;
-            //w.WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            
-            w.ShowDialog();
+            w.WindowStartupLocation = WindowStartupLocation.CenterOwner;            
+            w.ShowDialog();           
         }
 
         private void findItem_Click(object sender, RoutedEventArgs e)
+        {            
+
+        }
+
+        private void btnRefresh_Click(object sender, RoutedEventArgs e)
         {
 
-        }      
+        }
     }
 }
