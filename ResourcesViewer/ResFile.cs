@@ -5,14 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace ResourcesViewer
+namespace ResourcesViewer.Model
 {
-    class ResFile : FileBase
-    {
-        public FileInfo file { get; set; }
-        public ResFile(string name, string path, FileInfo file) : base(name, path)
-        {
-            this.file = file;
-        }
+    class ResFile : FileItem
+    {       
     }
 }

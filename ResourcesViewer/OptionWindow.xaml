@@ -4,10 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ResourcesViewer"
+        xmlns:model="clr-namespace:ResourcesViewer.Model"
         mc:Ignorable="d"
         Title="Options" Height="300" Width="400" Background="WhiteSmoke" WindowStartupLocation="CenterOwner">
     <Window.Resources>
-        <ObjectDataProvider x:Key="myOptions" ObjectType="{x:Type local:Options}" MethodName="GetInstance">
+        <ObjectDataProvider x:Key="myOptions" ObjectType="{x:Type model:Options}" MethodName="GetInstance">
         </ObjectDataProvider>
     </Window.Resources>   
 

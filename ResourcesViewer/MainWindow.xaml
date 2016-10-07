@@ -4,8 +4,23 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ResourcesViewer"
+        xmlns:model="clr-namespace:ResourcesViewer.Model" 
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
+
+    <Window.Resources>
+
+        <HierarchicalDataTemplate DataType="{x:Type model:DirectoryItem}"
+                                  ItemsSource="{Binding Child}">
+            <TextBlock Text="{Binding Path=Name}" ToolTip="{Binding Path=Path}" />
+        </HierarchicalDataTemplate>
+
+        <DataTemplate DataType="{x:Type model:FileItem}">
+            <TextBlock Text="{Binding Path=Name}" ToolTip="{Binding Path=Path}" />
+        </DataTemplate>
+
+    </Window.Resources>
+
     <DockPanel>
         <Menu DockPanel.Dock="Top" x:Name="menu" VerticalAlignment="Top" HorizontalAlignment="Stretch">
             <MenuItem x:Name="fileItem" Header="_File" >
@@ -34,10 +49,10 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TreeView Grid.Column="0"/>
+            <TreeView Grid.Column="0" ItemsSource="{Binding}"/>
             <GridSplitter Grid.Column="1" Grid.RowSpan="2" Width="2"  VerticalAlignment="Stretch"
                           HorizontalAlignment="Center"/>
-            <TextBlock Grid.Column="2" Text="tr"/>
+            <TextBlock Grid.Column="2" />
         </Grid>
 
     </DockPanel>

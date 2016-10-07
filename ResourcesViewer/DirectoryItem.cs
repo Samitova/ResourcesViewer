@@ -5,13 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace ResourcesViewer
+namespace ResourcesViewer.Model
 {
-    class Directory:FileBase
+    class DirectoryItem:FileBase
     {
+        public List<FileBase> Child { get; set; }
         public DirectoryInfo directory { get; set; }
-        public Directory(string name, string path, DirectoryInfo dir): base (name, path) {
-            directory = dir;           
+               
+        public DirectoryItem()
+        {
+            Child = new List<FileBase>();
         }
     }
 }

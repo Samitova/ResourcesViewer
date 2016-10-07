@@ -6,14 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace ResourcesViewer
+namespace ResourcesViewer.Model
 {
-    class MapFile : FileBase
-    {
-        public FileInfo file { get; set; }
-        public MapFile(string name, string path, FileInfo file):base(name, path) 
-        {
-            this.file = file;
-        }
+    class MapFile : FileItem
+    {       
     }
 }

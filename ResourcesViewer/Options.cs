@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 
-namespace ResourcesViewer
+namespace ResourcesViewer.Model
 {
     class Options
     {
@@ -42,7 +42,7 @@ namespace ResourcesViewer
 
         public void SaveConfiguration()
         {
-            SetAppSettings("rootDirectory", rootDirectory); 
+            SetAppSettings("rootDirectory", rootDirectory.ToString()); 
             SetAppSettings("isXmlExtentionFlag", isXmlFile.ToString()); 
             SetAppSettings("isResExtentionFlag", isResFile.ToString()); 
             SetAppSettings("isMapExtentionFlag", isMapFile.ToString());                     

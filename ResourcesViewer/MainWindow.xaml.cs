@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ResourcesViewer.Model;
 
 namespace ResourcesViewer
 {
@@ -22,8 +23,12 @@ namespace ResourcesViewer
     {        
         public MainWindow()
         {
-            InitializeComponent();            
-            
+            InitializeComponent();
+
+            List<FileBase> filesTree = FilesProvider.GetFilesTree(Options.GetInstance().rootDirectory);
+
+            DataContext = filesTree;
+
         }
 
         private void exitItem_Click(object sender, RoutedEventArgs e)
@@ -40,13 +45,10 @@ namespace ResourcesViewer
         }
 
         private void findItem_Click(object sender, RoutedEventArgs e)
-        {            
-
-        }
-
-        private void btnRefresh_Click(object sender, RoutedEventArgs e)
         {
-
+           
         }
+
+      
     }
 }
